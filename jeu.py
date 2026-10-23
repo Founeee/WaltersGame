@@ -43,13 +43,18 @@ class WaltersGame:
         self.drawBoard()
 
     def onclick(self, event):
-        pass
+        if self.marginY < event.y < self.marginY + self.tailleCellule and self.marginX < event.x < self.marginX + self.tailleCellule * self.taille:
+            pos = (event.x - self.marginX) // self.tailleCellule
+            self.gameTurn(pos)
 
-    def possiblePawn(self):
-        pass
+    def possiblePawn(self, pos):
+        if self.board[pos] != 1:
+            return
 
-    def possibleDestination(self):
-        pass
+        return any(self.board[i] == 0 for i in range(pos))
+
+    def possibleDestination(self, x1, x2):
+        return x2 < x1 and self.board[x2] == 0
 
     def again(self):
         pass
@@ -60,7 +65,7 @@ class WaltersGame:
     def fin(self):
         pass
 
-    def gameTurn(self):
+    def gameTurn(self, position):
         pass
 
 
