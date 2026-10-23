@@ -69,7 +69,7 @@ class WaltersGame:
         self.board[x2] = 1
         
     def fin(self):
-        return not any(self.board[i] == 0 for i in range(self.taille))
+        return not any(self.possiblePawn(i) for i in range(self.taille))
 
     def gameTurn(self, position):
         if self.pion is None:
