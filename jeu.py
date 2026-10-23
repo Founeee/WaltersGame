@@ -24,6 +24,9 @@ class WaltersGame:
         self.drawBoard()
         self.player = 1
 
+        self.canvas.bind("<Button-1>", self.onclick)
+        
+
     def newBoard(self):
         return [(random.randint(0, 1)) for _ in range(self.taille)]
 
@@ -35,10 +38,12 @@ class WaltersGame:
             if case == 1:
                 Canvas.create_oval(self.canvas, index * self.tailleCellule + self.marginX + 10, self.marginY + 10, index * self.tailleCellule + self.marginY + self.tailleCellule - 10, self.tailleCellule + self.marginY - 10, fill="red")
 
-
     def updateDisplay(self):
-        pass
+        self.label.config(text= f"Player {self.player}")
+        self.drawBoard()
 
+    def onclick(self, event):
+        pass
 
     def possiblePawn(self):
         pass
