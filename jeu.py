@@ -63,11 +63,12 @@ class WaltersGame:
         self.drawBoard()
         self.pion = None
 
-    def put(self):
-        pass
-
+    def put(self, x1, x2):
+        self.board[x1] = 0
+        self.board[x2] = 1
+        
     def fin(self):
-        pass
+        return not any(self.board[i] == 0 for i in range(self.taille))
 
     def gameTurn(self, position):
         pass
@@ -76,7 +77,6 @@ class WaltersGame:
 
 app_root = Tk()
 app = WaltersGame(app_root)
-print(app.newBoard())
 app.root.mainloop()
 
 
