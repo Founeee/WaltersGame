@@ -23,6 +23,7 @@ class WaltersGame:
 
         self.drawBoard()
         self.player = 1
+        self.pion = None
 
         self.canvas.bind("<Button-1>", self.onclick)
         
@@ -57,7 +58,10 @@ class WaltersGame:
         return x2 < x1 and self.board[x2] == 0
 
     def again(self):
-        pass
+        self.board = self.newBoard()
+        self.player = 1
+        self.drawBoard()
+        self.pion = None
 
     def put(self):
         pass
