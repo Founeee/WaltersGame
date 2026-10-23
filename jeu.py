@@ -15,10 +15,14 @@ class WaltersGame:
         self.height = self.marginY * 2 + self.tailleCellule
         self.width = self.marginX * 2 + self.tailleCellule * self.taille
 
-        self.canvas = Canvas(self.root, height=self.height, width=self.width, bg="black")
+        self.canvas = Canvas(self.root, height=self.height, width=self.width, bg="black", highlightbackground="black")
         self.canvas.pack()
 
+        self.label = Label(self.root, text="Player 1", bg="black", fg="white",  font=("Courier", 18, "bold"))
+        self.label.pack()
+
         self.drawBoard()
+        self.player = 1
 
     def newBoard(self):
         return [(random.randint(0, 1)) for _ in range(self.taille)]
@@ -30,7 +34,10 @@ class WaltersGame:
 
             if case == 1:
                 Canvas.create_oval(self.canvas, index * self.tailleCellule + self.marginX + 10, self.marginY + 10, index * self.tailleCellule + self.marginY + self.tailleCellule - 10, self.tailleCellule + self.marginY - 10, fill="red")
-            
+
+
+    def updateDisplay(self):
+        pass
 
 
     def possiblePawn(self):
