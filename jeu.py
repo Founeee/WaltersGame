@@ -28,6 +28,9 @@ class WaltersGame:
         for index, case in enumerate(self.board):
             Canvas.create_rectangle(self.canvas, index * self.tailleCellule + self.marginX, self.marginY, index * self.tailleCellule + self.marginY + self.tailleCellule, self.tailleCellule + self.marginY, outline='white')
 
+            if case == 1:
+                Canvas.create_oval(self.canvas, index * self.tailleCellule + self.marginX + 10, self.marginY + 10, index * self.tailleCellule + self.marginY + self.tailleCellule - 10, self.tailleCellule + self.marginY - 10, fill="red")
+            
 
 
     def possiblePawn(self):
