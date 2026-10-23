@@ -1,5 +1,6 @@
 from tkinter import *
 import random
+from tkinter import messagebox
 
 class WaltersGame:
     def __init__(self, root):
@@ -71,8 +72,32 @@ class WaltersGame:
         return not any(self.board[i] == 0 for i in range(self.taille))
 
     def gameTurn(self, position):
-        pass
+        if self.pion is None:
+            if self.board[position] == 1:
+                if self.possiblePawn(position):
+                    self.pion = position
 
+        else:
+            if position == self.pion:
+                self.pion = None
+
+            elif self.board[position] == 1 and self.possiblePawn(position):
+                self.pion = position
+
+            elif self.possibleDestination(self.pion, position):
+                self.put(self.pion, position)
+                self.pion = None
+
+                if self.fin():
+                    messagebox.showinfo("Welter's Game", f"Winner {self.player}")
+                    if messagebox.askyesno("Welter's Game", "Veux-tu rejouer une partie ?"):
+                        self.again()
+                    else:
+                        self.root.quit()
+                    return
+
+                self.player = 2 if self.player == 1 else 1
+                self.updateDisplay()
 
 
 app_root = Tk()
